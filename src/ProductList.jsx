@@ -1,7 +1,15 @@
 import React, { useState,useEffect } from 'react';
 import './ProductList.css'
+import addItem from 'CreatSlice.jsx'
 function ProductList() {
-  
+    
+
+    const [addedToCart, setAddedToCart] = useState(false);
+    const handleAddToCart = (payload) => {
+        setAddedToCart(true);
+        
+    }
+
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -252,7 +260,23 @@ function ProductList() {
 
         <div className="product-grid">
 
+                {
+                    plantsArray.map(section =>{
+                    
+                    <div className="product-category">{section.category}</div>
+                    <ul>
+                        {section.plants.map(plant =>{
+                        <li className="product-card">
 
+                            <div className="product-title">{plant.name}</div>
+                            <img src={plant.image} className="product-image"/>
+                            <div className="product-price">{plant.price}</div>
+                            <div className="product-description">{plant.description}</div>
+                            <button disabled={addedToCart} onClick={handleAddToCart} className="product-button">Add to Cart</button>
+
+                        </li>})}
+                    </ul>})
+                }
         </div>
 
     </div>
