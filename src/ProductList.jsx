@@ -260,23 +260,24 @@ function ProductList() {
 
         <div className="product-grid">
 
-                {
-                    plantsArray.map(section =>{
-                    
-                    <div className="product-category">{section.category}</div>
-                    <ul>
-                        {section.plants.map(plant =>{
-                        <li className="product-card">
+            {plantsArray.map(section =>(
+            
+            <div className='product-section'>
+                <div className="product-category">{section.category}</div>
+                <ul>
+                    {section.plants.map(plant =>(
+                    <li className="product-card">
 
-                            <div className="product-title">{plant.name}</div>
-                            <img src={plant.image} className="product-image"/>
-                            <div className="product-price">{plant.price}</div>
-                            <div className="product-description">{plant.description}</div>
-                            <button disabled={addedToCart} onClick={handleAddToCart} className="product-button">Add to Cart</button>
+                        <div className="product-title">{plant.name}</div>
+                        <img src={plant.image} className="product-image"/>
+                        <div className="product-price">{plant.price}</div>
+                        <div className="product-description">{plant.description}</div>
+                        <button disabled={addedToCart} onClick={handleAddToCart} className="product-button">Add to Cart</button>
 
-                        </li>})}
-                    </ul>})
-                }
+                    </li>))}
+                </ul>
+            </div>))
+            }
         </div>
 
     </div>
