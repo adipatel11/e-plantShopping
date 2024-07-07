@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import {addItem} from './CreatSlice.jsx'
-import {dispatch} from './CartItem.jsx'
+import {useDispatch} from 'react-redux'
 import './ProductList.css'
 function ProductList() {
     
 
     const [addedToCart, setAddedToCart] = useState({});
-
+    const dispatch = useDispatch();
     const handleAddToCart = (product) => {
         dispatch(addItem(product));
         setAddedToCart((prevState) => ({
