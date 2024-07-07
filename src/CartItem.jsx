@@ -1,12 +1,9 @@
 import React from 'react';
-import {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, updateQuantity } from './CreatSlice';
 import './CartItem.css';
 
-const Cart = () => {
-
-  [isCheckoutVisible, setCheckoutVisible] = useState(false);
+const Cart = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
 
@@ -20,7 +17,7 @@ const Cart = () => {
   };
 
   const handleContinueShopping = (e) => {
-    setCheckoutState(false);
+    onContinueShopping();
   };
 
   const handleCheckoutShopping = (e) => {
@@ -50,7 +47,7 @@ const Cart = () => {
   };
 
   return (
-    <div className={`cart-container ${isCheckoutVisible ? '':'hidden'}`}>
+    <div className="cart-container">
       <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
       <div>
         {cart.map(item => (
